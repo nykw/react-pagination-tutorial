@@ -2,14 +2,16 @@ import React, { FC } from 'react';
 // import Flag from 'react-flags';
 const Flag = require('react-flags');
 
-type Props = {
-  country: {
-    cca2: string;
-    region: string;
-    name: {
-      common: string;
-    };
+export type Country = {
+  cca2: string;
+  region: string;
+  name: {
+    common: string;
   };
+};
+
+type Props = {
+  country: Country;
 };
 
 const CountryCard: FC<Props> = ({ country }) => {

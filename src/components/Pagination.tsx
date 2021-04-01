@@ -26,7 +26,7 @@ type Props = {
     totalPages: number;
     pageLimit: number;
     totalRecords: number;
-  }) => undefined;
+  }) => void;
 };
 
 const Pagination: FC<Props> = ({
