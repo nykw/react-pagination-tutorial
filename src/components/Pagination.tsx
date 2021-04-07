@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { FC, MouseEventHandler, useCallback, useEffect, useState } from 'react';
+import { OnPageChange } from '../App';
 
 const range = (from: number, to: number, step = 1): number[] => {
   let i = from;
@@ -16,17 +17,7 @@ type Props = {
   totalRecords: number;
   pageLimit?: number;
   pageNeighbours?: number;
-  onPageChanged?: ({
-    currentPage,
-    totalPages,
-    pageLimit,
-    totalRecords,
-  }: {
-    currentPage: number;
-    totalPages: number;
-    pageLimit: number;
-    totalRecords: number;
-  }) => void;
+  onPageChanged?: OnPageChange;
 };
 
 const Pagination: FC<Props> = ({
@@ -120,10 +111,6 @@ const Pagination: FC<Props> = ({
     evt.preventDefault();
     gotoPage(currentPage + pageNeighbours * 2 + 1);
   };
-
-  useEffect(() => {
-    gotoPage(1);
-  }, [gotoPage]);
 
   useEffect(() => {
     onPageChanged({

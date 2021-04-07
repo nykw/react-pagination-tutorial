@@ -4,7 +4,20 @@ import './App.css';
 import CountryCard, { Country } from './components/CountryCard';
 import Pagination from './components/Pagination';
 
+// TODO: 型定義ファイルの作成
 const Countries = require('countries-api');
+
+export type OnPageChange = ({
+  currentPage,
+  totalPages,
+  pageLimit,
+  totalRecords,
+}: {
+  currentPage: number;
+  totalPages: number;
+  pageLimit: number;
+  totalRecords: number;
+}) => void;
 
 const App: FC = () => {
   const [allCountries, setAllCountries] = useState<Country[]>([]);
@@ -12,18 +25,8 @@ const App: FC = () => {
   const [currentPage, setCurrentPage] = useState<number | null>(null);
   const [totalPages, setTotalPages] = useState<number | null>(null);
 
-  const onPageChanged = useCallback(
-    ({
-      currentPage,
-      totalPages,
-      pageLimit,
-      totalRecords,
-    }: {
-      currentPage: number;
-      totalPages: number;
-      pageLimit: number;
-      totalRecords: number;
-    }) => {
+  const onPageChanged: OnPageChange = useCallback(
+    ({ currentPage, totalPages, pageLimit }) => {
       const offset = (currentPage - 1) * pageLimit;
       const currentCountries = allCountries.slice(offset, offset + pageLimit);
 
