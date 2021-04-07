@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { FC, MouseEventHandler, useCallback, useEffect, useState } from 'react';
-import { OnPageChange } from '../App';
+import { OnPageChanged } from '../App';
 
 const range = (from: number, to: number, step = 1): number[] => {
   let i = from;
@@ -17,7 +17,7 @@ type Props = {
   totalRecords: number;
   pageLimit?: number;
   pageNeighbours?: number;
-  onPageChanged?: OnPageChange;
+  onPageChanged?: OnPageChanged;
 };
 
 const Pagination: FC<Props> = ({

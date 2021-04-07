@@ -7,7 +7,7 @@ import Pagination from './components/Pagination';
 // TODO: 型定義ファイルの作成
 const Countries = require('countries-api');
 
-export type OnPageChange = ({
+export type OnPageChanged = ({
   currentPage,
   totalPages,
   pageLimit,
@@ -25,7 +25,7 @@ const App: FC = () => {
   const [currentPage, setCurrentPage] = useState<number | null>(null);
   const [totalPages, setTotalPages] = useState<number | null>(null);
 
-  const onPageChanged: OnPageChange = useCallback(
+  const onPageChanged: OnPageChanged = useCallback(
     ({ currentPage, totalPages, pageLimit }) => {
       const offset = (currentPage - 1) * pageLimit;
       const currentCountries = allCountries.slice(offset, offset + pageLimit);
